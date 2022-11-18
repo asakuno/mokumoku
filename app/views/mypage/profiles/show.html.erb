@@ -34,6 +34,10 @@
           <%= f.label :email, class: 'form-label' %>
           <%= f.email_field :email, class: 'form-control', required: true, placeholder: 'Email' %>
         </div>
+         <div class="mb-3">
+          <%= f.label :gender, class: 'form-label' %>
+          <%= f.enum_select :gender, class: 'form-control' %>
+        </div>
         <div class="mb-3">
           <%= f.label :name, class: 'form-label' %>
           <%= f.text_field :name, class: 'form-control', placeholder: 'らんてくん' %>

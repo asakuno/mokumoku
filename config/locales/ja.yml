@@ -6,3 +6,7 @@ ja:
         commented_to_event: あなたのイベントにコメントがあった時
         attended_to_event: あなたのイベントに参加申し込みがあった時
         liked_event: あなたのイベントにいいねがついた時
+      gender:
+        lgbt: LGBT
+        woman: 女性
+        man: 男性
