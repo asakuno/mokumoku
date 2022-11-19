@@ -30,6 +30,17 @@ class Event < ApplicationRecord
     event.only_woman == true  
   end
 
+  def check(user)
+    check_woman(user) || check_others(user)
+  end
+
+  def check_others(user)
+    self.only_woman == false && user.gender == "lgtm" || self.only_woman == false && user.gender == "man"
+  end
+
+  def check_woman(user)
+    self.only_woman == true && user.gender == "woman" || self.only_woman == false && user.gender == "woman"  
+  end
 
   def past?
     held_at < Time.current
