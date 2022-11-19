@@ -30,6 +30,11 @@ class User < ApplicationRecord
         -> { joins(:notification_timings).merge(NotificationTiming.liked_event) }
 
   enum gender: { lgtm: 0, woman: 1, man: 2 }
+  
+  def woman?
+    current_user.gender == "woman"
+    return true
+  end
 
   def owner?(event)
     event.user_id == id

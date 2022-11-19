@@ -20,6 +20,11 @@ class Event < ApplicationRecord
     validates :held_at
   end
 
+  def check_gender_woman(user)
+    user.gender == "woman"
+  end
+
+
   def past?
     held_at < Time.current
   end
