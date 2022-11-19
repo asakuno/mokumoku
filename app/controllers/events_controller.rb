@@ -24,7 +24,7 @@ class EventsController < ApplicationController
   end
 
   def woman
-    @q = Event.woman.ransack(params[:q])
+    @q = Event.woman.future.ransack(params[:q])
     @events = @q.result(distinct: true).includes(:bookmarks, :prefecture, user: { avatar_attachment: :blob })
                 .order(held_at: :desc).page(params[:page])
     @search_path = woman_events_path
