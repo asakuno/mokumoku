@@ -12,7 +12,11 @@
               </h5>
             </div>
             <h1>
-              <%= @event.title %>
+              <% if @event.check_only_woman?(@event) %>
+                [女性限定] <%= @event.title %>
+              <% else %>
+                <%= @event.title %>
+              <% end %>
             </h1>
             <% if logged_in? %>
               <div class="ms-auto">
