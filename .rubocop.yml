@@ -6,6 +6,7 @@ AllCops:
     - 'db/**/*'
     - 'bin/*'
     - 'config/**/*'
+    - 'vendor/**/*'
 Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
@@ -14,3 +15,6 @@ Style/ClassAndModuleChildren:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+
+inherit_gem:
+  rubocop-discourse: default.yml
