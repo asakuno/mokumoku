@@ -25,6 +25,11 @@ class Event < ApplicationRecord
   end
 
 
+  def check_only_woman?(event)
+    event.only_woman == true  
+  end
+
+
   def past?
     held_at < Time.current
   end
