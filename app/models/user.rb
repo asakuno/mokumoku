@@ -33,7 +33,6 @@ class User < ApplicationRecord
   
   def woman?
     current_user.gender == "woman"
-    return true
   end
 
   def owner?(event)

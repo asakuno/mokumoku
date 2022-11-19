@@ -21,12 +21,11 @@ class Event < ApplicationRecord
     validates :held_at
   end
 
-  def check_gender_woman(user)
+  def woman?(user)
     user.gender == "woman"
   end
 
-
-  def check_only_woman?(event)
+  def only_woman?(event)
     event.only_woman == true  
   end
 

@@ -12,7 +12,7 @@
               </h5>
             </div>
             <h1>
-              <% if @event.check_only_woman?(@event) %>
+              <% if @event.only_woman?(@event) %>
                 [女性限定] <%= @event.title %>
               <% else %>
                 <%= @event.title %>
