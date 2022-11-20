@@ -21,10 +21,6 @@ class Event < ApplicationRecord
     validates :held_at
   end
 
-  def woman?(user)
-    user.gender == "woman"
-  end
-
   def only_woman?(event)
     event.only_woman == true
   end
