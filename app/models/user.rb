@@ -31,10 +31,6 @@ class User < ApplicationRecord
 
   enum gender: { lgtm: 0, woman: 1, man: 2 }
 
-  def woman?
-    current_user.gender == "woman"
-  end
-
   def owner?(event)
     event.user_id == id
   end
