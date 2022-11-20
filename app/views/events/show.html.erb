@@ -89,7 +89,6 @@
           <div class="text-center">
             <% if logged_in? %>
               <% if !current_user.owner?(@event) %>
-                <% if @event.check(current_user) %>
                   <% if current_user.attend?(@event) %>
                     <%= link_to 'キャンセルする',
                               event_attendance_url(@event),
@@ -98,6 +97,7 @@
                               data: { confirm: 'キャンセルします' }
                     %>
                   <% else %>
+                    <% if !@event.only_woman || (@event.only_woman && current_user.woman?) %>
                     <%= link_to 'このもくもく会に参加する',
                               event_attendance_url(@event),
                               class: 'btn btn-primary',

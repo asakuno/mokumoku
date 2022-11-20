@@ -41,4 +41,5 @@ yarn-debug.log*
 
 /config/credentials/production.key
 vendor/bundle
-coverage/
+/coverage
+
