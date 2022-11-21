@@ -23,6 +23,14 @@ class EventsController < ApplicationController
     render :index
   end
 
+  def woman
+    @q = Event.woman.future.ransack(params[:q])
+    @events = @q.result(distinct: true).includes(:bookmarks, :prefecture, user: { avatar_attachment: :blob })
+                .order(held_at: :desc).page(params[:page])
+    @search_path = woman_events_path
+    render :index
+  end
+
   def new
     @event = Event.new
   end
@@ -60,6 +68,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :content, :held_at, :prefecture_id, :thumbnail)
+    params.require(:event).permit(:title, :content, :held_at, :prefecture_id, :thumbnail, :only_woman)
   end
 end

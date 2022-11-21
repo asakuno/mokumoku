@@ -5,7 +5,10 @@
     <% end %>
     <div class="card-body">
       <h4 class="card-title fw-bold">
-        <%= link_to event.title, event_path(event)  %>
+        <% if event.only_woman? %>
+          <h4 class="mb-0">[女性限定]</h4>
+        <% end %>
+          <%= link_to event.title, event_path(event)  %>
       </h4>
       <p class="card-text"><%= event.content %></p>
       <hr />

@@ -104,11 +104,23 @@ GEM
     bindex (0.8.1)
     bootsnap (1.9.3)
       msgpack (~> 1.0)
+    brakeman (5.4.0)
     builder (3.2.4)
     byebug (11.1.3)
+    capybara (3.38.0)
+      addressable
+      matrix
+      mini_mime (>= 0.1.3)
+      nokogiri (~> 1.8)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      regexp_parser (>= 1.5, < 3.0)
+      xpath (~> 3.2)
+    childprocess (4.1.0)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     diff-lcs (1.4.4)
+    docile (1.4.0)
     draper (4.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -118,6 +130,9 @@ GEM
       ruby2_keywords
     enum_help (0.0.18)
       activesupport (>= 3.0.0)
+    enum_select_rails (0.3.0)
+      enum_help
+      rails
     erubi (1.10.0)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
@@ -173,6 +188,7 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.2)
+    matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.14.4)
@@ -192,6 +208,13 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
+    panolint (0.1.6)
+      brakeman (>= 4.8, < 6.0)
+      rubocop (>= 0.83, < 2.0)
+      rubocop-performance (~> 1.5)
+      rubocop-rails (~> 2.5)
+      rubocop-rake (~> 0.5)
+      rubocop-rspec (~> 2.0)
     parallel (1.21.0)
     parser (3.0.2.0)
       ast (~> 2.4.1)
@@ -278,12 +301,23 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.12.0)
       parser (>= 3.0.1.1)
+    rubocop-discourse (3.0)
+      rubocop (>= 1.1.0)
+      rubocop-rspec (>= 2.0.0)
+    rubocop-performance (1.15.1)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
     rubocop-rails (2.11.3)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
+    rubocop-rake (0.6.0)
+      rubocop (~> 1.0)
+    rubocop-rspec (2.11.1)
+      rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
+    rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -294,7 +328,18 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    selenium-webdriver (4.6.1)
+      childprocess (>= 0.5, < 5.0)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2, < 3.0)
+      websocket (~> 1.0)
     semantic_range (3.0.0)
+    simplecov (0.21.2)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.4)
     sorcery (0.16.1)
       bcrypt (~> 3.1)
       oauth (~> 0.5, >= 0.5.5)
@@ -323,21 +368,27 @@ GEM
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
       semantic_range (>= 2.3.0)
+    websocket (1.2.9)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    xpath (3.2.0)
+      nokogiri (~> 1.8)
     zeitwerk (2.5.1)
 
 PLATFORMS
   x86_64-darwin-19
+  x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
   aws-sdk-s3
   bootsnap (>= 1.4.4)
   byebug
+  capybara
   draper
   enum_help
+  enum_select_rails
   factory_bot_rails
   faker
   jb
@@ -345,6 +396,7 @@ DEPENDENCIES
   kaminari!
   letter_opener_web
   listen (~> 3.3)
+  panolint
   pg
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
@@ -354,8 +406,11 @@ DEPENDENCIES
   rb-readline
   rspec-rails
   rubocop
+  rubocop-discourse
   rubocop-rails
   sass-rails (>= 6)
+  selenium-webdriver
+  simplecov
   sorcery
   spring
   sqlite3 (~> 1.4)
